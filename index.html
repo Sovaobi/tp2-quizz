@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ma Bibliothèque</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="image/icon.png" type="image/png" />
+
+
+</head>
+<body>
+  <h1>Ajouter un livre</h1>
+
+  <form id="book-form">
+    <label>Titre : <input type="text" id="title" required></label><br>
+    <label>Auteur : <input type="text" id="author" required></label><br>
+    <label>Année de publication : <input type="number" id="year" required></label><br>
+    <label>Emprunté : <input type="checkbox" id="borrowed"></label><br>
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <h2>Retourner un livre</h2>
+<form id="return-form">
+  <label for="return-title">Livre à retourner :</label><br>
+  <input type="text" id="return-title" required>
+  <button type="submit">Retourner</button>
+</form>
+
+
+
+  <h2>Bibliothèque :</h2>
+  <ul id="library-list"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>

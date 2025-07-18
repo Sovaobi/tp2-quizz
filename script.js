@@ -1,0 +1,86 @@
+const library = [];
+
+//Ajouter un nouveau livre
+function addBook(book) {
+  if (
+    typeof book.title === "string" &&
+    typeof book.author === "string" &&
+    typeof book.publicationYear === "number" &&
+    typeof book.borrowed === "boolean"
+  ) {
+    library.push(book);
+    console.log("Livre ajouté :", book);
+  } else {
+    console.error("Erreur");
+  }
+}
+
+//lister les livres disponibles
+addBook({
+  title: "Spark of the Everflame",
+  author: "Penn Cole",
+  publicationYear: 2025,
+  borrowed: false,
+});
+
+addBook({
+  title: "Une braise sous la cendre",
+  author: "Sabaah Tahir",
+  publicationYear: 2025,
+  borrowed: false,
+});
+
+addBook({
+  title: "Shatter Me",
+  author: "Tahereh Mafi",
+  publicationYear: 2025,
+  borrowed: false,
+});
+
+addBook({
+  title: "Super livre",
+  author: "Mathéo",
+  publicationYear: 2000,
+  borrowed: false,
+});
+
+function getAvailableBooks() {
+  for (let i = 0; i < library.length; i++) {
+    const book = library[i];
+    if (book.borrowed === false) {
+      console.log(book);
+    }
+  }
+}
+
+//rechercher un livre par titre
+function searchByTitle(title) {
+  for (let i = 0; i < library.length; i++) {
+    const book = library[i];
+    if (book.title.tolowerCase().trim() === title.tolowerCase().trim()) {
+      return book;
+    }
+  }
+}
+
+//Recherche par auteur ou année->pas finis
+function searchByAuthor(author) {
+   for (let i = 0; i < library.length; i++) {
+    const book = library[i];
+    if (book.author.tolowerCase().trim() === author.tolowerCase().trim()) {
+      return book;
+    }
+  }
+}
+
+//Emprunter un livre->pas finis
+const searchForm = document.getElementById("search-form");
+const searchTitle = document.getElementById("search-title");
+
+searchForm.addEventListener("submit", (e) => e.preventDefault());
+const searchbook = searchByTitle(searchTitle.value);
+const searchResult = document.getElementById("search-result");
+if (searchBook) {
+}
+
+//retourner un livre->pas finis
