@@ -80,10 +80,10 @@ searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const searchedBook = searchByTitle(searchTitle.value);
     const searchResult = document.getElementById("search-result");
-    if (searchedBook) {
-        searchResult.textContent = Le livre ${searchedBook.title} de ${searchedBook.author} 
-        est ${searchedBook.borrowed ? "emprunté" : "disponible"}
-    }
+   if (searchedBook) {
+    searchResult.textContent = `Le livre ${searchedBook.title} de ${searchedBook.author} est ${searchedBook.borrowed ? "emprunté" : "disponible"}`;
+}
+
 });
 
 //Emprunter un livre
