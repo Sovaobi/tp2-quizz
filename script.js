@@ -63,7 +63,7 @@ function searchByTitle(title) {
   }
 }
 
-//Recherche par auteur ou année->pas finis
+//Recherche par auteur ou année
 function searchByAuthor(author) {
    for (let i = 0; i < library.length; i++) {
     const book = library[i];
@@ -73,14 +73,51 @@ function searchByAuthor(author) {
   }
 }
 
-//Emprunter un livre->pas finis
 const searchForm = document.getElementById("search-form");
 const searchTitle = document.getElementById("search-title");
 
-searchForm.addEventListener("submit", (e) => e.preventDefault());
-const searchbook = searchByTitle(searchTitle.value);
-const searchResult = document.getElementById("search-result");
-if (searchBook) {
+searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const searchedBook = searchByTitle(searchTitle.value);
+    const searchResult = document.getElementById("search-result");
+    if (searchedBook) {
+        searchResult.textContent = Le livre ${searchedBook.title} de ${searchedBook.author} 
+        est ${searchedBook.borrowed ? "emprunté" : "disponible"}
+    }
+});
+
+//Emprunter un livre
+function borrowBook(title) {
+  for (let i = 0; i < library.length; i++) {
+    const book = library[i];
+    if (book.title.toLowerCase().trim() === title.toLowerCase().trim()) {
+      if (book.borrowed === false) {
+        book.borrowed = true;
+        console.log(`Le livre "${book.title}" a été emprunté.`);
+        return;
+      } else {
+        console.log(`Le livre "${book.title}" est déjà emprunté.`);
+        return;
+      }
+    }
+  }
 }
 
-//retourner un livre->pas finis
+//retourner un livre
+function returnBook(title) {
+  for (let i = 0; i < library.length; i++) {
+    const book = library[i];
+    if (book.title.toLowerCase().trim() === title.toLowerCase().trim()) {
+      if (book.borrowed === true) {
+        book.borrowed = false;
+        console.log(`Le livre "${book.title}" a été retourné`);
+        return;
+      } else {
+        console.log(`Le livre "${book.title}" n'était pas emprunté.`);
+        return;
+      }
+    }
+  }
+  console.log("Livre non trouvé.");
+}
+
